@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Intro';
+    src: url('/Intro\ Light\ Alt.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Intro', sans-serif;
+}
