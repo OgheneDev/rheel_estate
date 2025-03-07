@@ -27,15 +27,15 @@ const PropertyCard = ({ property }) => {
                 <span className='text-semibold text-[18px]'>{property.location}</span>
             </div>
             <div className='text-[#DB2626] flex justify-between mt-2'>
-                <div className='flex gap-2'>
+                <div className='flex gap-1'>
                     <Bed size={20} className=' text-[#DB2626]' />
-                    <span>{property.bedroom} Beds</span>
+                    <span className='text-[13px]'>{property.bedroom} Beds</span>
                 </div>
-                <div className='flex gap-2'>
+                <div className='flex gap-1'>
                     <Bath size={20} className=' text-[#DB2626]' />
                     <span>{property.bathroom} Baths</span>
                 </div>
-                <div className='flex gap-2'>
+                <div className='flex gap-1'>
                     <Sofa size={20} className=' text-[#DB2626]' />
                     <span>{property.living_room} Living Rooms</span>
                 </div>
