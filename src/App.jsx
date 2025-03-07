@@ -1,25 +1,20 @@
 import React from 'react'
-import Navbar from './components/Navbar'
-import HeroSection from './components/homepage/HeroSection'
-import Living from './components/homepage/Living'
-import AboutSection from './components/homepage/AboutSection'
-import MissonAndVisionSection from './components/homepage/MissonAndVisionSection'
-import ServicesSection from './components/homepage/ServicesSection'
-import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import MainLayout from './layouts/MainLayout';
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 
 const App = () => {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<MainLayout />}>
+        <Route path="/" element={<HomePage />} />
+      </Route>
+    )
+  );
   return (
-    <div className=''>
-      <div className="bg-[url('/src/assets/images/hero-bg.png')] bg-cover bg-center h-screen">
-        <Navbar />
-        <HeroSection />
-      </div>
-      <Living />
-      <AboutSection />
-      <MissonAndVisionSection />
-      <ServicesSection />
-      <Footer />
-    </div>
+    <>
+       <RouterProvider router={router} />
+    </>
   )
 }
 
