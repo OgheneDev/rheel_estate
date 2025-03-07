@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import logo from '../assets/images/logo.png'
 
@@ -8,6 +9,15 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const navItems = [
+    { name: 'About', path: '/about' },
+    { name: 'Properties', path: '/properties' },
+    { name: 'Services', path: '/services' },
+    { name: 'Media', path: '/media' },
+    { name: 'Careers', path: '/careers' },
+    { name: 'Contact Us', path: '/contact' }
+  ];
 
   return (
     <header className='p-5 bg-transparent relative'>
@@ -31,25 +41,25 @@ const Navbar = () => {
                 {/* Navigation */}
                 <nav className='flex-1 overflow-y-auto'>
                     <ul className='py-4'>
-                        {[
-                            'About',
-                            'Properties',
-                            'Services',
-                            'Media',
-                            'Careers',
-                            'Contact Us'
-                        ].map((item, index) => (
+                        {navItems.map((item, index) => (
                             <li key={index}>
-                                <a href="#" 
-                                   className='flex items-center px-6 py-4 text-gray-700 hover:bg-gray-50 hover:text-[#DB2626] border-b border-gray-100 transition-colors'>
-                                    <span className='text-[15px] font-medium'>{item}</span>
-                                </a>
+                                <NavLink
+                                    to={item.path}
+                                    onClick={toggleMenu}
+                                    className={({ isActive }) =>
+                                        `flex items-center px-6 py-4 text-gray-700 border-b border-gray-100 transition-colors ${
+                                            isActive 
+                                            ? 'text-[#DB2626] bg-gray-50' 
+                                            : 'hover:bg-gray-50 hover:text-[#DB2626]'
+                                        }`
+                                    }
+                                >
+                                    <span className='text-[15px] font-medium'>{item.name}</span>
+                                </NavLink>
                             </li>
                         ))}
                     </ul>
                 </nav>
-
-                
             </div>
         </div>
 

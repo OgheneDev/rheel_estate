@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getProperties } from '../../api/properties/requests';
 import PropertyCard from './PropertyCard';
+import PropertyCardSkeleton from './PropertyCardSkeleton';
 
 const PropertyList = () => {
     const [properties, setProperties] = useState([]);
@@ -23,7 +24,13 @@ const PropertyList = () => {
         fetchProperties();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return (
+        <div className='grid grid-cols-1 gap-10'>
+            {[1, 2, 3].map((i) => (
+                <PropertyCardSkeleton key={i} />
+            ))}
+        </div>
+    );
     if (error) return <div>Error: {error}</div>;
 
     return (

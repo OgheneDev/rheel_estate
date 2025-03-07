@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const axiosInstance = axios.create({
   baseURL: 'https://apidoc.rheel.ng/', // Replace with your API base URL
-  timeout: 10000, // Request timeout in milliseconds
+  timeout: 100000, // Request timeout in milliseconds
   headers: {
     'Content-Type': 'application/json',
   },
