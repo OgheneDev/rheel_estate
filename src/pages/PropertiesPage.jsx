@@ -19,7 +19,7 @@ const PropertiesPage = () => {
         const fetchProperties = async () => {
             try {
                 const data = await getProperties();
-                setProperties(Array.isArray(data) ? data : []); // Fix data assignment
+                setProperties(Array.isArray(data) ? data : []);
                 setLoading(false);
             } catch (error) {
                 setError(error);
@@ -85,12 +85,13 @@ const PropertiesPage = () => {
                             <Logs size={20} />
                             <LayoutGrid size={20} />
                         </div>
+                        Sort by:
                         <div className='relative'>
                             <button 
-                                className='flex items-center gap-2 border rounded-md px-3 py-2'
+                                className='flex items-center gap-2 text-[#6D737A]'
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             >
-                                Sort by <ChevronDown size={20} />
+                                Default <ChevronDown size={20} className='text-black' />
                             </button>
                             {isDropdownOpen && (
                                 <div className='absolute top-12 left-0 bg-white shadow-lg rounded-md z-10 min-w-[200px]'>

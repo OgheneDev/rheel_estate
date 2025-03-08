@@ -32,7 +32,9 @@ const Navbar = () => {
             <div className='h-full flex flex-col'>
                 {/* Header */}
                 <div className='p-6 flex justify-between items-center border-b'>
+                    <NavLink to='/'>
                     <img src={logo} alt="Rheel Estate" className='h-12' />
+                    </NavLink>
                     <button onClick={toggleMenu} className='p-2 hover:bg-gray-100 rounded-full transition-colors'>
                         <X size='24' />
                     </button>
