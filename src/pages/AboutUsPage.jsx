@@ -13,7 +13,7 @@ const AboutUsPage = () => {
             </article>
         </div>
 
-        <div className="px-5">
+        <div className="px-5 py-5">
         <div className='flex flex-col mb-7'>
             <img src={about} alt="" />
             <p className='text-[18px]'>Rheel Estate Limited is an innovative real estate company founded with a singular mission: to bring transparency, trust, and efficiency to Nigeria’s property market. With a deep understanding of the complexities that come with buying, selling, leasing, and managing properties, we are committed to transforming how Nigerians engage with the real estate industry, both at home and abroad.</p>
@@ -41,13 +41,29 @@ const AboutUsPage = () => {
         <article>
             <h4 className='text-xl font-bold mb-7'>Our Core Values</h4>
             <p className='text-[18px] mb-7'>At Rheel Estate, our core values guide everything we do:</p>
-            <ul className='flex flex-col gap-7 list-disc list-inside'>
+            <ul className='flex flex-col gap-7 list-disc list-inside mb-7'>
                 <li>Integrity – We believe in being upfront and honest with our clients, offering clear, transparent information at all times.</li>
                 <li>Quality – We are committed to providing only the highest quality properties and services, rejecting poorly built or overpriced homes.</li>
                 <li>Customer-Centricity – Our clients are at the heart of everything we do, and we go above and beyond to ensure they have a smooth and seamless experience.</li>
                 <li>Innovation – We leverage cutting-edge technology to enhance the real estate process and make transactions faster, simpler, and more efficient.</li>
                 <li>Accountability – We take full responsibility for every transaction, providing accurate, well-documented records and keeping our clients informed throughout.</li>
             </ul>
+        </article>
+        <div className='flex'>
+            <img src={about} alt="" className='w-[50%]' />
+            <img src={about} alt="" className='w-[50%]'  />
+        </div>
+        <article>
+            <h4 className='text-xl font-bold mb-7'>What Makes Us Different</h4>
+            <p className='text-[18px] mb-7'>We are not just another real estate agency. Rheel Estate is a company built on the principles of transparency and trust, where the client’s interests come first. In addition to offering traditional real estate services like buying, selling, and leasing, we also provide full transaction representation, allowing clients who are unavailable or wish to keep their identity private to have their transactions managed from start to finish. This is just one of the ways we offer value and convenience to our clients.</p>
+            <p className='text-[18px] mb-7'>Additionally, we understand the evolving needs of property owners and investors, which is why we offer comprehensive property management services. From overseeing short- and long-term rentals to keeping precise financial records for complete transparency, we are your dedicated partner in maintaining and maximizing your property’s potential.</p>
+            <p className='text-[18px] mb-7'>Looking to the future, Rheel Estate plans to venture into property development, where we will build and deliver well-constructed, modern homes at fair market prices. Our focus will remain on high-quality homes designed to meet the needs of Nigerians, rejecting overpriced and poorly built properties that currently flood the market.</p>      
+        </article>
+        <article>
+            <h4 className='text-xl font-bold mb-7'>Our Commitment to the Future</h4>
+            <p className='text-[18px] mb-7'>Rheel Estate is more than a business; it’s a commitment to changing the real estate landscape in Nigeria. As we continue to grow, we remain focused on improving the experience of every client we serve, and we aim to expand our footprint across Nigeria, creating a better, more accessible property market for all. We believe that our commitment to quality, ethical practices, and transparency will help build stronger communities, more satisfied homeowners, and a thriving real estate sector for the future.</p>
+            <p className='text-[18px] mb-7'>With a forward-thinking approach, we are also exploring partnerships, innovative solutions, and technology that can make the real estate experience even more seamless and beneficial for all involved. Our clients’ trust is our most valuable asset, and we are dedicated to continuously earning it through exceptional service, accountability, and unwavering dedication.</p>
+            <p className='text-[18px] mb-7'>At Rheel Estate, we are more than just facilitators of property transactions—we are building a legacy of quality, trust, and community that will shape Nigeria’s real estate industry for years to come.</p>
         </article>
         </div>
     </div>
