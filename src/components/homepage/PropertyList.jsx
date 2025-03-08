@@ -7,6 +7,7 @@ const PropertyList = () => {
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
         const fetchProperties = async () => {
@@ -24,9 +25,13 @@ const PropertyList = () => {
         fetchProperties();
     }, []);
 
+    const displayedProperties = showAll 
+        ? properties
+        : properties.slice(0, window.innerWidth < 768 ? 2 : 6);
+
     if (loading) return (
-        <div className='grid grid-cols-1 gap-10'>
-            {[1, 2, 3].map((i) => (
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+            {[1, 2, 3, 4, 5, 6].map((i) => (
                 <PropertyCardSkeleton key={i} />
             ))}
         </div>
@@ -35,16 +40,20 @@ const PropertyList = () => {
 
     return (
         <div>
-          <div className='grid grid-cols-1 gap-10'>
-            {properties.map(property => (
-                <PropertyCard key={property.id} property={property} />
-            ))}
-        </div>
-        <div className="flex justify-center">
-        <button className='border-[#DB2626] border rounded-full px-3 py-2 text-[14px] mt-10'>
-          Load More
-        </button>
-        </div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+                {displayedProperties.map(property => (
+                    <PropertyCard key={property.id} property={property} />
+                ))}
+            </div>
+            
+            <div className="flex justify-center">
+                <button 
+                    onClick={() => setShowAll(!showAll)}
+                    className='border-[#DB2626] border rounded-full px-3 py-2 text-[14px] mt-10'
+                >
+                    {showAll ? 'Show Less' : 'Load More'}
+                </button>
+            </div>
         </div>
     );
 };
