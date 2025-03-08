@@ -44,12 +44,12 @@ const ServicesSection = () => {
         }
     ]
   return (
-    <div className='px-5 py-10'>
+    <div className='px-5 py-10 md:px-[80px]'>
         <h2 className='text-2xl text-[#004040] text-center font-bold mb-5'>Our Services</h2>
-        <p className='text-[#889099] text-[18px] mb-8'>At Rheel Estate Limited, we provide comprehensive real estate solutions designed to simplify property transactions, maximize investment opportunities, and ensure seamless property management. Whether you’re looking to buy, sell, lease, or invest, our expert team ensures a transparent, secure, and rewarding experience.</p>
-        <div className="flex flex-col gap-10">
+        <p className='text-[#889099] text-[18px] md:text-[16px] mb-8'>At Rheel Estate Limited, we provide comprehensive real estate solutions designed to simplify property transactions, maximize investment opportunities, and ensure seamless property management. Whether you’re looking to buy, sell, lease, or invest, our expert team ensures a transparent, secure, and rewarding experience.</p>
+        <div className="flex flex-col md:flex-row gap-10">
             {data.map((service, index) => (
-                <div key={index} className='flex flex-col gap-5'>
+                <div key={index} className='flex flex-col gap-5 md:bg-white md:p-5 md:shadow-lg'>
                     <img src={service.icon} alt={service.title} className='w-[80px] h-[80px]' />
                     <div>
                         <h3 className='text-2xl font-bold text-[#004040] mb-5'>{service.title}</h3>

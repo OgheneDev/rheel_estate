@@ -61,7 +61,7 @@ const PropertiesPage = () => {
     };
 
     if (loading) return (
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 p-5'>
+        <div className='grid grid-cols-1 md:grid-cols-3 md:px-[75px] gap-10 p-5'>
             {Array(itemsPerPage).fill(null).map((_, i) => (
                 <PropertyCardSkeleton key={i} />
             ))}
@@ -70,15 +70,15 @@ const PropertiesPage = () => {
 
     return (
         <div>
-            <div className="bg-[url('/src/assets/images/propery-banner.png')] bg-cover bg-center h-[240px]">
+            <div className="bg-[url('/src/assets/images/propery-banner.png')] bg-cover bg-center h-[260px]">
                 <Navbar />
-                <article className='text-white text-center pt-20'>
-                    <h3 className='text-xl'>Properties</h3>
+                <article className='text-white text-center pt-20 pb-5 '>
+                    <h3 className='text-2xl font-bold mb-3'>Properties</h3>
                     <p>Homes/Properties</p>
                 </article>
             </div>
 
-            <div className='px-5 py-8'>
+            <div className='px-5 md:px-[75px] py-8'>
                 <div className='flex items-center justify-between mb-6'>
                     <div className='flex items-center gap-3'>
                         <div className='flex items-center gap-2'>
@@ -91,12 +91,12 @@ const PropertiesPage = () => {
                                 className='flex items-center gap-2 text-[#6D737A]'
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             >
-                                Default <ChevronDown size={20} className='text-black' />
+                                Default Order <ChevronDown size={20} className='text-black' />
                             </button>
                             {isDropdownOpen && (
                                 <div className='absolute top-12 left-0 bg-white shadow-lg rounded-md z-10 min-w-[200px]'>
                                     {[
-                                        { label: 'Default', value: 'default' },
+                                        { label: 'Default Order', value: 'default' },
                                         { label: 'Price: Low to High', value: 'price-asc' },
                                         { label: 'Price: High to Low', value: 'price-desc' },
                                         { label: 'Newest First', value: 'newest' }
@@ -127,7 +127,7 @@ const PropertiesPage = () => {
                         <button
                             key={type.value}
                             onClick={() => setSelectedType(type.value)}
-                            className={` ${
+                            className={` cursor-pointer ${
                                 selectedType === type.value
                                     ? 'font-bold'
                                     : ''
@@ -139,8 +139,8 @@ const PropertiesPage = () => {
                 </div>
             </div>
 
-            <div className='p-5'>
-                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
+            <div className='p-5 md:px-[75px]'>
+                <div className='grid grid-cols-1 md:grid-cols-3 md:gap-15 gap-10'>
                     {currentItems.map(property => (
                         <PropertyCard key={property.id} property={property} />
                     ))}

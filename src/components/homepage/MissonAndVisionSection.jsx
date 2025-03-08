@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import mission from '../../assets/images/mission.png'
 import vision from '../../assets/images/vision.png'
 
@@ -17,16 +18,18 @@ const MissonAndVisionSection = () => {
     ]
 
   return (
-    <section className='px-5 py-10'>
+    <section className='px-5 py-10 md:px-[78px]'>
         <h2 className='text-2xl text-center mb-8'>Our Mission and Vision</h2>
 
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-10 md:flex-row">
             {data.map((item, index) => (
                 <div key={index} className='bg-white shadow-xl p-3'>
-                    <img src={vision} alt="" className='mb-5' />
+                    <img src={vision} alt="" className='mb-5 w-full md:h-[270px]' />
                     <h3 className='text-2xl font-bold text-[#242527] mb-5'>{item.title}</h3>
-                    <p className='text-[18px] text-[#C4C4C4] mb-5'>{item.description}</p>
-                    <button className='rounded-lg px-4 py-2 border'>Learn More</button>
+                    <p className='text-[18px] md:text-[16px] text-[#C4C4C4] mb-5'>{item.description}</p>
+                    <Link to='/about'>
+                    <button className='rounded-lg px-4 py-2 border cursor-pointer'>Learn More</button>
+                    </Link>
                 </div>
             ))}
         </div>

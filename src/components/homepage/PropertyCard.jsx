@@ -19,12 +19,12 @@ const formatPrice = (price) => {
 
 const PropertyCard = ({ property }) => {
     return (
-        <div className="group">
+        <div className="group md:w-[350px]">
             <div className="overflow-hidden rounded-[20px] mb-5">
                 <img 
                     src={property.property_images[0]} 
                     alt="Property Image" 
-                    className='w-full h-[275px] object-cover transition-transform duration-700 ease-in-out group-hover:scale-110' 
+                    className='w-full h-[275px] object-cover cursor-pointer transition-transform duration-700 ease-in-out group-hover:scale-110' 
                 />
             </div>
             <h2 className='text-2xl font-bold mb-7'>{propertyTypes[property.property_type_id]}</h2>
@@ -48,7 +48,7 @@ const PropertyCard = ({ property }) => {
             </div>
             <div className='mt-2 flex justify-between items-center text-[#DB2626]'>
                 <p className='text-[18px]'>₦{formatPrice(property.price)}</p>
-                <button className='border border-black p-2 px-3 rounded-full text-[14px]'>Learn More</button>
+                <button className='border border-black p-2 px-3 rounded-full text-[14px] cursor-pointer'>Learn More</button>
             </div>
         </div>
     );

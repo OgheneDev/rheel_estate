@@ -2,7 +2,7 @@ import React from 'react';
 
 const PropertyCardSkeleton = () => {
     return (
-        <div className="animate-pulse">
+        <div className="animate-pulse md:w-[350px]">
             <div className="rounded-[20px] mb-5 bg-gray-200 h-[275px]" />
             <div className="h-7 bg-gray-200 w-1/3 mb-7 rounded" />
             <div className="flex gap-2 mb-2">
