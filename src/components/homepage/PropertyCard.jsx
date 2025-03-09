@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MapPin, Bed, Bath, Sofa } from 'lucide-react';
 
 const propertyTypes = {
@@ -10,7 +11,6 @@ const propertyTypes = {
     6: 'Carcass',
     7: 'Land',
     8: 'JV Land',
-    // Add more mappings as needed
 };
 
 const formatPrice = (price) => {
@@ -18,6 +18,11 @@ const formatPrice = (price) => {
 };
 
 const PropertyCard = ({ property }) => {
+    const navigate = useNavigate();
+
+    const handlePropertyClick = () => {
+        navigate(`/properties/${property.id}`);
+    }
     return (
         <div className="group md:w-[350px]">
             <div className="overflow-hidden rounded-[20px] mb-5">
@@ -34,21 +39,25 @@ const PropertyCard = ({ property }) => {
             </div>
             <div className='text-[#DB2626] flex justify-between mt-2'>
                 <div className='flex gap-1 items-center'>
-                    <Bed size={20} className=' text-[#DB2626]' />
+                    <Bed size={20} strokeWidth={1} fill="#DB2626" className='text-white' />
                     <span className='text-[14px]'>{property.bedroom} Beds</span>
                 </div>
                 <div className='flex gap-1 items-center'>
-                    <Bath size={20} className=' text-[#DB2626]' />
+                    <Bath size={20} strokeWidth={1} fill="#DB2626" className='text-white' />
                     <span className='text-[14px]'>{property.bathroom} Baths</span>
                 </div>
                 <div className='flex gap-1 items-center'>
-                    <Sofa size={20} className=' text-[#DB2626]' />
+                    <Sofa size={20} strokeWidth={1} fill="#DB2626" className='text-white' />
                     <span className='text-[14px]'>{property.living_room} Living Rooms</span>
                 </div>
             </div>
             <div className='mt-2 flex justify-between items-center text-[#DB2626]'>
                 <p className='text-[18px]'>₦{formatPrice(property.price)}</p>
-                <button className='border border-black p-2 px-3 rounded-full text-[14px] cursor-pointer'>Learn More</button>
+                <button 
+                 onClick={handlePropertyClick}
+                 className='border border-black p-2 px-3 rounded-full text-[14px] cursor-pointer'>
+                    Learn More
+                </button>
             </div>
         </div>
     );

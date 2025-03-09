@@ -40,7 +40,7 @@ const PropertyList = () => {
 
     return (
         <div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:px-[50px] gap-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                 {displayedProperties.map(property => (
                     <PropertyCard key={property.id} property={property} />
                 ))}
@@ -49,7 +49,7 @@ const PropertyList = () => {
             <div className="flex justify-center">
                 <button 
                     onClick={() => setShowAll(!showAll)}
-                    className='border-[#DB2626] border rounded-full cursor-pointer px-3 py-2 text-[14px] mt-10'
+                    className='border-[#DB2626] border rounded-full px-3 py-2 text-[14px] mt-10'
                 >
                     {showAll ? 'Show Less' : 'Load More'}
                 </button>
