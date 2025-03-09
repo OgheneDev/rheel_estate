@@ -150,6 +150,35 @@ const PropertyDetailPage = () => {
             <h3 className='text-xl font-bold mb-5'>Product Description</h3>
             <p>{property.property_description}</p>
         </div>
+        <p className='font-bold mb-5'>
+           Amenities: {property.amenities.map((amenity, index) => (
+           <span key={index}>
+            {amenity}{index < property.amenities.length - 1 ? ', ' : ''}
+           </span>
+          ))}
+       </p>
+       <div className='flex flex-col gap-7'>
+        <div>
+            <h3 className='text-xl font-bold mb-5'>Building Plan</h3>
+            <div className='flex flex-wrap'>
+            {property.floor_plan.map((plan, index) => (
+                <img key={index} src={plan} alt="Building Plan" className='rounded-lg w-[50%]' />
+            ))}
+            </div>
+        </div>
+        <div>
+            <h3 className='text-xl font-bold mb-5'>Video Tour</h3>
+            <iframe
+                width="350"
+                height="315"
+                src={property.video_upload}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+            ></iframe>
+        </div>
+       </div>
         </div>
     </div>
   )
