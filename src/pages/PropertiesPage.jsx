@@ -61,7 +61,7 @@ const PropertiesPage = () => {
     };
 
     if (loading) return (
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 p-5'>
+        <div className='grid grid-cols-1 md:px-[78px] md:grid-cols-3  gap-10 p-5'>
             {Array(itemsPerPage).fill(null).map((_, i) => (
                 <PropertyCardSkeleton key={i} />
             ))}
@@ -78,24 +78,25 @@ const PropertiesPage = () => {
                 </article>
             </div>
 
-            <div className='px-5 py-8'>
+            <div className='px-5 md:px-[78px] py-8'>
                 <div className='flex items-center justify-between mb-6'>
                     <div className='flex items-center gap-3'>
                         <div className='flex items-center gap-2'>
                             <Logs size={20} />
                             <LayoutGrid size={20} />
+                            Sort by:
                         </div>
                         <div className='relative'>
                             <button 
-                                className='flex items-center gap-2 border rounded-md px-3 py-2'
+                                className='flex items-center gap-2 text-[#6D737A] cursor-pointer'
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             >
-                                Sort by <ChevronDown size={20} />
+                                Default Order <ChevronDown size={20} />
                             </button>
                             {isDropdownOpen && (
                                 <div className='absolute top-12 left-0 bg-white shadow-lg rounded-md z-10 min-w-[200px]'>
                                     {[
-                                        { label: 'Default', value: 'default' },
+                                        { label: 'Default Order', value: 'default' },
                                         { label: 'Price: Low to High', value: 'price-asc' },
                                         { label: 'Price: High to Low', value: 'price-desc' },
                                         { label: 'Newest First', value: 'newest' }
@@ -138,7 +139,7 @@ const PropertiesPage = () => {
                 </div>
             </div>
 
-            <div className='p-5'>
+            <div className='p-5 md:px-[75px]'>
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
                     {currentItems.map(property => (
                         <PropertyCard key={property.id} property={property} />

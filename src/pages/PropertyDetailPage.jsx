@@ -78,29 +78,29 @@ const PropertyDetailPage = () => {
         <div className="bg-[url('/src/assets/images/propery-banner.png')] bg-cover bg-center">
             <Navbar />
         </div>
-        <div className="px-5 py-7">
+        <div className="px-5 py-7 md:py-10 md:px-[78px]">
         <h2 className='text-2xl font-bold'>{propertyTypes[property.property_type_id]}</h2>
         <div className='flex gap-2 mb-5'>
             <MapPin size={20} className=' border-black' />
             <span className='text-semibold'>{property.location}</span>
         </div>
-        <div className='flex flex-col gap-7 mb-5'>
-            <div className="image">
-                <img src={property.property_images[0]} alt="Property Image" className='rounded-lg' />
+        <div className='flex flex-col md:flex-row gap-7 md:gap-0 mb-5'>
+            <div className="image md:w-[60%]">
+                <img src={property.property_images[0]} alt="Property Image" className='rounded-lg md:h-[350px] md:w-[90%]' />
             </div>
-            <div className="content">
-                <div className=' flex justify-between mt-2 border rounded-[15px] py-2 px-5 mb-5'>
+            <div className="content md:w-[45%]">
+                <div className=' flex justify-between mt-2 border  rounded-[15px] py-2 px-5 mb-5'>
                     <div className='flex gap-1 items-center'>
                         <Bed size={20} className='text-[#0A2F1E]' />
-                        <span className='text-[14px]'>{property.bedroom} Beds</span>
+                        <span className='text-[14px] md:text-[18px]'>{property.bedroom} Beds</span>
                     </div>
                     <div className='flex gap-1 items-center'>
                         <Bath size={20} className='text-[#0A2F1E]' />
-                        <span className='text-[14px]'>{property.bathroom} Baths</span>
+                        <span className='text-[14px] md:text-[18px]'>{property.bathroom} Baths</span>
                     </div>
                     <div className='flex gap-1 items-center'>
                         <Sofa size={20} strokeWidth={1} fill="#0A2F1E" className='text-white' />
-                        <span className='text-[14px]'>{property.living_room} Living Rooms</span>
+                        <span className='text-[14px] md:text-[18px]'>{property.living_room} Living Rooms</span>
                     </div>
                 </div>
                 <div className='border rounded-[15px] p-3 mb-5'>
@@ -141,35 +141,35 @@ const PropertyDetailPage = () => {
             <div className='flex gap-5 flex-wrap'>
                {property.property_images.slice(1).map((image, index) => (
                  <div key={index} className="image">
-                 <img src={image} alt="Property Image" className='rounded-lg w-[80px]' />
+                 <img src={image} alt="Property Image" className='rounded-lg w-[80px] md:w-[110px]' />
             </div>
             ))}
             </div>
         </div>
         <div className="bg-black w-full h-[1px] mb-5"></div>
-        <div className='mb-5'>
-            <h3 className='text-xl font-bold mb-5'>Product Description</h3>
-            <p>{property.property_description}</p>
+        <div className='mb-5 md:mb-7'>
+            <h3 className='text-xl font-bold mb-5 md:mb-2'>Product Description</h3>
+            <p className='text-[18px]'>{property.property_description}</p>
         </div>
-        <p className='font-bold mb-5'>
+        <p className='font-bold mb-5 md:mb-7'>
            Amenities: {property.amenities.map((amenity, index) => (
            <span key={index}>
             {amenity}{index < property.amenities.length - 1 ? ', ' : ''}
            </span>
           ))}
        </p>
-       <div className='flex flex-col gap-7'>
-        <div>
+       <div className='flex flex-col md:flex-row gap-7'>
+        <div className='bg-purple-800'>
             <h3 className='text-xl font-bold mb-5'>Building Plan</h3>
-            <div className='flex flex-wrap'>
+            <div className='flex flex-wrap md:w-[50%] bg-red-500'>
             {property.floor_plan.map((plan, index) => (
                 <img key={index} src={plan} alt="Building Plan" className='rounded-lg w-[50%]' />
             ))}
             </div>
         </div>
-        <div>
+        <div className='bg-purple-800'>
             <h3 className='text-xl font-bold mb-5'>Video Tour</h3>
-            <div className="w-full aspect-video">
+            <div className="w-full md:w-[400px] aspect-video bg-purple-800">
             <iframe
               className="w-full h-[300px]"
               src={property.video_upload}
