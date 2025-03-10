@@ -9,7 +9,7 @@ import ServicesSection from '../components/homepage/ServicesSection'
 const HomePage = () => {
     return (
         <div className=''>
-          <div className="bg-[url('/src/assets/images/hero-bg.png')] md:bg-[url('/src/assets/images/hero-bg-desktop.png')] md:py-5 bg-cover bg-center h-screen">
+          <div className="bg-[url('/src/assets/images/hero-bg.jpg')] md:py-5 bg-cover bg-center h-screen md:h-[140vh] bg-blend-overlay bg-black/40">
             <Navbar />
             <HeroSection />
           </div>
