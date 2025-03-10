@@ -59,20 +59,38 @@ const PropertyList = () => {
 
     return (
         <div id="property-list">
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 md:px-[50px]'>
-                {displayedProperties.map(property => (
-                    <PropertyCard key={property.id} property={property} />
-                ))}
-            </div>
-            
-            <div className="flex justify-center">
-                <button 
-                    onClick={() => setShowAll(!showAll)}
-                    className='border-[#DB2626] border rounded-full px-3 py-2 text-[14px] mt-10'
-                >
-                    {showAll ? 'Show Less' : 'Load More'}
-                </button>
-            </div>
+            {displayedProperties.length === 0 && searchParams.isSearchActive ? (
+                <div className="text-center py-10">
+                    <h3 className="text-xl font-semibold text-gray-700 mb-2">No properties found</h3>
+                    <p className="text-gray-500">
+                        We couldn't find any properties matching your search criteria.
+                        {searchParams.location && (
+                            <span className="block mt-1">
+                                Try searching in a different location or adjusting your filters.
+                            </span>
+                        )}
+                    </p>
+                </div>
+            ) : (
+                <>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 md:px-[50px]'>
+                        {displayedProperties.map(property => (
+                            <PropertyCard key={property.id} property={property} />
+                        ))}
+                    </div>
+                    
+                    {displayedProperties.length > (window.innerWidth < 768 ? 2 : 6) && (
+                        <div className="flex justify-center">
+                            <button 
+                                onClick={() => setShowAll(!showAll)}
+                                className='border-[#DB2626] border rounded-full px-3 py-2 text-[14px] mt-10'
+                            >
+                                {showAll ? 'Show Less' : 'Load More'}
+                            </button>
+                        </div>
+                    )}
+                </>
+            )}
         </div>
     );
 };
