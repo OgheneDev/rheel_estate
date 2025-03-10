@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
+import PropertySort from '../components/properties/PropertySort';
+import PropertyFilter from '../components/properties/PropertyFilter';
+import PropertyPagination from '../components/properties/PropertyPagination';
 import { getProperties } from '../api/properties/requests';
 import PropertyCard from '../components/homepage/PropertyCard';
 import PropertyCardSkeleton from '../components/homepage/PropertyCardSkeleton';
-import { Logs, LayoutGrid, ChevronDown, ArrowLeft, ArrowRight } from 'lucide-react';
 
 const PropertiesPage = () => {
     const [properties, setProperties] = useState([]);
@@ -72,64 +74,16 @@ const PropertiesPage = () => {
 
             <div className='px-5 md:px-[78px] py-8'>
                 <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-4'>
-                    {/* Sort Section */}
-                    <div className='flex items-center gap-3'>
-                        <div className='flex items-center gap-2'>
-                            <Logs size={20} />
-                            <LayoutGrid size={20} />
-                            Sort by:
-                        </div>
-                        <div className='relative'>
-                            <button 
-                                className='flex items-center gap-2 text-[#6D737A] cursor-pointer'
-                                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                            >
-                                Default Order <ChevronDown size={20} />
-                            </button>
-                            {isDropdownOpen && (
-                                <div className='absolute top-12 left-0 bg-white shadow-lg rounded-md z-10 min-w-[200px]'>
-                                    {[
-                                        { label: 'Default Order', value: 'default' },
-                                        { label: 'Price: Low to High', value: 'price-asc' },
-                                        { label: 'Price: High to Low', value: 'price-desc' },
-                                        { label: 'Newest First', value: 'newest' }
-                                    ].map(option => (
-                                        <button 
-                                            key={option.value}
-                                            className='block w-full text-left px-3 py-4 hover:bg-gray-50'
-                                            onClick={() => {
-                                                setSortBy(option.value);
-                                                setIsDropdownOpen(false);
-                                            }}
-                                        >
-                                            {option.label}
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Filter Buttons */}
-                    <div className='flex items-center justify-between md:justify-normal md:gap-8'>
-                        {[
-                            { label: 'All Properties', value: 'all' },
-                            { label: 'For Sale', value: 'Sell' },
-                            { label: 'For Rent', value: 'Rent' }
-                        ].map(type => (
-                            <button
-                                key={type.value}
-                                onClick={() => setSelectedType(type.value)}
-                                className={`text-gray-600 hover:text-gray-900 ${
-                                    selectedType === type.value
-                                        ? 'font-bold text-gray-900'
-                                        : ''
-                                }`}
-                            >
-                                {type.label}
-                            </button>
-                        ))}
-                    </div>
+                    <PropertySort 
+                        sortBy={sortBy}
+                        setSortBy={setSortBy}
+                        isDropdownOpen={isDropdownOpen}
+                        setIsDropdownOpen={setIsDropdownOpen}
+                    />
+                    <PropertyFilter 
+                        selectedType={selectedType}
+                        setSelectedType={setSelectedType}
+                    />
                 </div>
             </div>
 
@@ -148,45 +102,13 @@ const PropertiesPage = () => {
                             ))}
                         </div>
                         
-                        <div className="flex justify-center items-center gap-2 mt-10">
-                            <button
-                                onClick={() => handlePageChange(currentPage - 1)}
-                                disabled={currentPage === 1}
-                                className={`px-3 py-4 rounded ${
-                                    currentPage === 1
-                                        ? 'bg-[#EDEFF6] text-[#104438]'
-                                        : 'bg-[#104438] text-white'
-                                }`}
-                            >
-                                <ArrowLeft size={20} />
-                            </button>
-
-                            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                                <button
-                                    key={page}
-                                    onClick={() => handlePageChange(page)}
-                                    className={`px-5 py-4 rounded ${
-                                        currentPage === page
-                                            ? 'bg-[#104438] text-white'
-                                            : 'bg-[#EDEFF6] text-[#104438]'
-                                    }`}
-                                >
-                                    {page}
-                                </button>
-                            ))}
-
-                            <button
-                                onClick={() => handlePageChange(currentPage + 1)}
-                                disabled={currentPage === totalPages}
-                                className={`px-3 py-4 rounded ${
-                                    currentPage === totalPages
-                                        ? 'bg-[#104438] text-white'
-                                        : 'bg-[#104438] text-white'
-                                }`}
-                            >
-                                <ArrowRight size={20} />
-                            </button>
-                        </div>
+                        {totalPages > 1 && (
+                            <PropertyPagination 
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                onPageChange={handlePageChange}
+                            />
+                        )}
                     </>
                 )}
             </div>
