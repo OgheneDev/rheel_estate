@@ -71,7 +71,7 @@ const PropertiesPage = () => {
             </div>
 
             <div className='px-5 md:px-[78px] py-8'>
-                <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-6'>
+                <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-4'>
                     {/* Sort Section */}
                     <div className='flex items-center gap-3'>
                         <div className='flex items-center gap-2'>
@@ -111,7 +111,7 @@ const PropertiesPage = () => {
                     </div>
 
                     {/* Filter Buttons */}
-                    <div className='flex items-center gap-8'>
+                    <div className='flex items-center justify-between md:justify-normal md:gap-8'>
                         {[
                             { label: 'All Properties', value: 'all' },
                             { label: 'For Sale', value: 'Sell' },

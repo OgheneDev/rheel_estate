@@ -5,7 +5,7 @@ import about from '../../assets/images/about.png'
 const AboutSection = () => {
     
   return (
-    <section className='py-15 px-5 md:px-[78px]'>
+    <section className='md:py-15 py-10 px-5 md:px-[78px]'>
         <h2 className='text-2xl text-center'>About Us</h2>
         <div className="flex flex-col md:flex-row md:gap-10 md:items-start leading-8.5">
         <img src={about} alt="About Us" className='md:w-full' />
