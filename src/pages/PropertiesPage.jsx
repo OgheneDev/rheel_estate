@@ -62,10 +62,10 @@ const PropertiesPage = () => {
 
     return (
         <div>
-            <div className="bg-[url('/src/assets/images/propery-banner.png')] bg-cover bg-center h-[240px]">
+            <div className="bg-[url('/src/assets/images/prop.jpg')] bg-cover bg-center h-[260px] bg-blend-overlay bg-[#185A5199]">
                 <Navbar />
                 <article className='text-white text-center pt-20'>
-                    <h3 className='text-xl'>Properties</h3>
+                    <h3 className='text-2xl md:mb-3 font-bold'>Properties</h3>
                     <p>Homes/Properties</p>
                 </article>
             </div>

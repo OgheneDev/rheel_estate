@@ -5,7 +5,7 @@ import about from '../assets/images/about.png'
 const AboutUsPage = () => {
   return (
     <div>
-        <div className="bg-[url('/src/assets/images/about-banner.png')] bg-cover bg-center h-[260px]">
+        <div className="bg-[url('/src/assets/images/about-banner.png')] bg-cover bg-center h-[260px] bg-blend-overlay bg-[#185A5199]">
             <Navbar />
             <article className='text-white text-center pt-20'>
                <h3 className='text-2xl md:mb-3 font-bold'>About Us</h3>

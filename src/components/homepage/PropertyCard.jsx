@@ -32,7 +32,7 @@ const PropertyCard = ({ property }) => {
                     className='w-full h-[275px] object-cover cursor-pointer transition-transform duration-700 ease-in-out group-hover:scale-110' 
                 />
             </div>
-            <h2 className='text-2xl font-bold mb-7'>{propertyTypes[property.property_type_id]}</h2>
+            <h2 className='text-2xl font-bold mb-3'>{propertyTypes[property.property_type_id]}</h2>
             <div className='flex gap-2'>
                 <MapPin size={20} className=' border-black' />
                 <span className='text-semibold text-[18px]'>{property.location}</span>
