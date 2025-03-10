@@ -60,14 +60,6 @@ const PropertiesPage = () => {
         window.scrollTo(0, 0);
     };
 
-    if (loading) return (
-        <div className='grid grid-cols-1 md:px-[78px] md:grid-cols-3  gap-10 p-5'>
-            {Array(itemsPerPage).fill(null).map((_, i) => (
-                <PropertyCardSkeleton key={i} />
-            ))}
-        </div>
-    );
-
     return (
         <div>
             <div className="bg-[url('/src/assets/images/propery-banner.png')] bg-cover bg-center h-[240px]">
@@ -79,7 +71,8 @@ const PropertiesPage = () => {
             </div>
 
             <div className='px-5 md:px-[78px] py-8'>
-                <div className='flex items-center justify-between mb-6'>
+                <div className='flex flex-col md:flex-row md:justify-between md:items-center gap-6 mb-6'>
+                    {/* Sort Section */}
                     <div className='flex items-center gap-3'>
                         <div className='flex items-center gap-2'>
                             <Logs size={20} />
@@ -116,75 +109,86 @@ const PropertiesPage = () => {
                             )}
                         </div>
                     </div>
-                </div>
 
-                <div className='flex justify-between items-center pb-4'>
-                    {[
-                        { label: 'All Properties', value: 'all' },
-                        { label: 'For Sale', value: 'Sell' },
-                        { label: 'For Rent', value: 'Rent' }
-                    ].map(type => (
-                        <button
-                            key={type.value}
-                            onClick={() => setSelectedType(type.value)}
-                            className={` ${
-                                selectedType === type.value
-                                    ? 'font-bold'
-                                    : ''
-                            }`}
-                        >
-                            {type.label}
-                        </button>
-                    ))}
+                    {/* Filter Buttons */}
+                    <div className='flex items-center gap-8'>
+                        {[
+                            { label: 'All Properties', value: 'all' },
+                            { label: 'For Sale', value: 'Sell' },
+                            { label: 'For Rent', value: 'Rent' }
+                        ].map(type => (
+                            <button
+                                key={type.value}
+                                onClick={() => setSelectedType(type.value)}
+                                className={`text-gray-600 hover:text-gray-900 ${
+                                    selectedType === type.value
+                                        ? 'font-bold text-gray-900'
+                                        : ''
+                                }`}
+                            >
+                                {type.label}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
 
             <div className='p-5 md:px-[75px]'>
-                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
-                    {currentItems.map(property => (
-                        <PropertyCard key={property.id} property={property} />
-                    ))}
-                </div>
-                
-                <div className="flex justify-center items-center gap-2 mt-10">
-                    <button
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                        className={`px-3 py-4 rounded ${
-                            currentPage === 1
-                                ? 'bg-[#EDEFF6] text-[#104438]'
-                                : 'bg-[#104438] text-white'
-                        }`}
-                    >
-                        <ArrowLeft size={20} />
-                    </button>
+                {loading ? (
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
+                        {Array(itemsPerPage).fill(null).map((_, i) => (
+                            <PropertyCardSkeleton key={i} />
+                        ))}
+                    </div>
+                ) : (
+                    <>
+                        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10'>
+                            {currentItems.map(property => (
+                                <PropertyCard key={property.id} property={property} />
+                            ))}
+                        </div>
+                        
+                        <div className="flex justify-center items-center gap-2 mt-10">
+                            <button
+                                onClick={() => handlePageChange(currentPage - 1)}
+                                disabled={currentPage === 1}
+                                className={`px-3 py-4 rounded ${
+                                    currentPage === 1
+                                        ? 'bg-[#EDEFF6] text-[#104438]'
+                                        : 'bg-[#104438] text-white'
+                                }`}
+                            >
+                                <ArrowLeft size={20} />
+                            </button>
 
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                            key={page}
-                            onClick={() => handlePageChange(page)}
-                            className={`px-5 py-4 rounded ${
-                                currentPage === page
-                                    ? 'bg-[#104438] text-white'
-                                    : 'bg-[#EDEFF6] text-[#104438]'
-                            }`}
-                        >
-                            {page}
-                        </button>
-                    ))}
+                            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                                <button
+                                    key={page}
+                                    onClick={() => handlePageChange(page)}
+                                    className={`px-5 py-4 rounded ${
+                                        currentPage === page
+                                            ? 'bg-[#104438] text-white'
+                                            : 'bg-[#EDEFF6] text-[#104438]'
+                                    }`}
+                                >
+                                    {page}
+                                </button>
+                            ))}
 
-                    <button
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                        className={`px-3 py-4 rounded ${
-                            currentPage === totalPages
-                                ? 'bg-[#104438] text-white'
-                                : 'bg-[#104438] text-white'
-                        }`}
-                    >
-                        <ArrowRight size={20} />
-                    </button>
-                </div>
+                            <button
+                                onClick={() => handlePageChange(currentPage + 1)}
+                                disabled={currentPage === totalPages}
+                                className={`px-3 py-4 rounded ${
+                                    currentPage === totalPages
+                                        ? 'bg-[#104438] text-white'
+                                        : 'bg-[#104438] text-white'
+                                }`}
+                            >
+                                <ArrowRight size={20} />
+                            </button>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );

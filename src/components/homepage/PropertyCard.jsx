@@ -39,11 +39,11 @@ const PropertyCard = ({ property }) => {
             </div>
             <div className='text-[#DB2626] flex justify-between mt-2'>
                 <div className='flex gap-1 items-center'>
-                    <Bed size={20} strokeWidth={1} fill="#DB2626" className='text-white' />
+                    <Bed size={20}  className='text-[#DB2626]' />
                     <span className='text-[14px]'>{property.bedroom} Beds</span>
                 </div>
                 <div className='flex gap-1 items-center'>
-                    <Bath size={20} strokeWidth={1} fill="#DB2626" className='text-white' />
+                    <Bath size={20}  className='text-[#DB2626]' />
                     <span className='text-[14px]'>{property.bathroom} Baths</span>
                 </div>
                 <div className='flex gap-1 items-center'>
