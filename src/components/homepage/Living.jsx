@@ -9,7 +9,6 @@ const Living = () => {
             <h1 className='text-3xl font-semibold'>Your Living</h1>
         </article>
         <PropertyList />
-        
     </section>
   )
 }

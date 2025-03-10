@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { getProperties } from '../../api/properties/requests';
 import PropertyCard from './PropertyCard';
 import PropertyCardSkeleton from './PropertyCardSkeleton';
+import { useSearch } from '../../context/SearchContext';
 
 const PropertyList = () => {
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showAll, setShowAll] = useState(false);
+    const { searchParams } = useSearch();
 
     useEffect(() => {
         const fetchProperties = async () => {
@@ -25,9 +27,26 @@ const PropertyList = () => {
         fetchProperties();
     }, []);
 
+    const filterProperties = (props) => {
+        // If search hasn't been initiated, return all properties
+        if (!searchParams.isSearchActive) {
+            return props;
+        }
+
+        return props.filter(property => {
+            const typeMatch = !searchParams.type || property.type === searchParams.type;
+            const locationMatch = !searchParams.location || 
+                property.location.toLowerCase().includes(searchParams.location.toLowerCase());
+            const propertyTypeMatch = !searchParams.propertyTypeId || 
+                property.property_type_id.toString() === searchParams.propertyTypeId;
+
+            return typeMatch && locationMatch && propertyTypeMatch;
+        });
+    };
+
     const displayedProperties = showAll 
-        ? properties
-        : properties.slice(0, window.innerWidth < 768 ? 2 : 6);
+        ? filterProperties(properties)
+        : filterProperties(properties).slice(0, window.innerWidth < 768 ? 2 : 6);
 
     if (loading) return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
@@ -39,8 +58,8 @@ const PropertyList = () => {
     if (error) return <div>Error: {error}</div>;
 
     return (
-        <div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:px-[50px]'>
+        <div id="property-list">
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 md:px-[50px]'>
                 {displayedProperties.map(property => (
                     <PropertyCard key={property.id} property={property} />
                 ))}
